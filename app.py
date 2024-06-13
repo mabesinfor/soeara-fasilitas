@@ -25,15 +25,18 @@ st.write('Perhitungan Pendukung Keputusan dengan Metode WP untuk Mengurutkan Fas
 
 def table_of_contents():
     st.sidebar.title('Daftar Isi')
-    st.sidebar.write('[Identifikasi Masalah](#identifikasi-masalah)')
-    st.sidebar.write('[Normalisasi Data Kualifikasi](#normalisasi-data-kualifikasi)')
-    st.sidebar.write('[Pemberian Bobot Kriteria - BEM UNSOED 2024](#pemberian-bobot-kriteria-bem-unsoed-2024)')
-    st.sidebar.write('1. [Menghitung Normalisasi Bobot](#menghitung-normalisasi-bobot)')
-    st.sidebar.write('2. [Data Alternatif Hasil Survei](#data-alternatif-hasil-survei)')
-    st.sidebar.write('3. [Perubahan Nilai Skala Kriteria](#perubahan-nilai-skala-kriteria)')
-    st.sidebar.write('4. [Menghitung Vektor S](#menghitung-vektor-s)')
-    st.sidebar.write('5. [Menghitung Vektor V](#menghitung-vektor-v)')
-    st.sidebar.write('6. [Memberikan Peringkat Alternatif](#memberikan-peringkat-alternatif)')
+    st.sidebar.markdown('''
+        [Identifikasi Masalah](#identifikasi-masalah)  
+        [Normalisasi Data Kualifikasi](#normalisasi-data-kualifikasi)  
+        [Pemberian Bobot Kriteria - BEM UNSOED 2024](#pemberian-bobot-kriteria-bem-unsoed-2024)  
+        1. [Menghitung Normalisasi Bobot](#menghitung-normalisasi-bobot)  
+        2. [Data Alternatif Hasil Survei](#data-alternatif-hasil-survei)  
+        3. [Perubahan Nilai Skala Kriteria](#perubahan-nilai-skala-kriteria)  
+        4. [Menghitung Vektor S](#menghitung-vektor-s)  
+        5. [Menghitung Vektor V](#menghitung-vektor-v)  
+        6. [Memberikan Peringkat Alternatif](#memberikan-peringkat-alternatif)
+        7. [Hasil Peringkat Alternatif Berdasarkan Fakultas Terjelek dalam Pembenahan Fasilitas](#hasil-peringkat-alternatif-berdasarkan-fakultas-terjelek-dalam-pembenahan-fasilitas)
+    ''', unsafe_allow_html=True)
 
 table_of_contents()
 
@@ -92,10 +95,12 @@ rank = pd.DataFrame({'Alternatif': ['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A
 rank = rank.style.apply(highlight_top_rank, axis=1)
                             
 st.subheader('Identifikasi Masalah')
+st.markdown("<a id='identifikasi-masalah'></a>", unsafe_allow_html=True)
 st.write('Tabel Alternatif :')
 st.write(alt)
 st.divider()
 st.subheader('Normalisasi Data Kualifikasi')
+st.markdown("<a id='normalisasi-data-kualifikasi'></a>", unsafe_allow_html=True)
 st.write('Tabel Skala Kriteria Keluhan Gedung :')
 st.write(sc_gedung)
 st.write('Tabel Skala Kriteria Keluhan Jalan :')
@@ -110,24 +115,29 @@ st.write('Tabel Skala Kriteria Keluhan Perpustakaan :')
 st.write(sc_perpus)
 st.divider()
 st.subheader('Pemberian Bobot Kriteria - BEM UNSOED 2024')
+st.markdown("<a id='pemberian-bobot-kriteria-bem-unsoed-2024'></a>", unsafe_allow_html=True)
 st.write('Tabel Bobot Kriteria :')
 st.write(kriteria)
 st.divider()
 st.subheader('1. Menghitung Normalisasi Bobot')
+st.markdown("<a id='menghitung-normalisasi-bobot'></a>", unsafe_allow_html=True)
 st.write('Rumus Normalisasi Bobot :')
 st.latex(r'W_{j} = \frac{W_{j}}{\sum{W_{j}}}')
 st.write('Hasil Normalisasi Bobot :')
 st.write(bobot)
 st.divider()
 st.subheader('2. Data Alternatif Hasil Survei')
+st.markdown("<a id='data-alternatif-hasil-survei'></a>", unsafe_allow_html=True)
 st.write('Tabel Jawaban Responden :')
 st.write(responden)
 st.divider()
 st.subheader('3. Perubahan Nilai Skala Kriteria')
+st.markdown("<a id='perubahan-nilai-skala-kriteria'></a>", unsafe_allow_html=True)
 st.write('Tabel Nilai Skala Kriteria :')
 st.write(nilai_sk)
 st.divider()
 st.subheader('4. Menghitung Vektor S')
+st.markdown("<a id='menghitung-vektor-s'></a>", unsafe_allow_html=True)
 st.write('Rumus Vektor S :')
 st.latex(r'S_{i} = \prod_{j=1}^{n} (x_{ij})^{w_{j}}')
 st.write('Contoh Hitung Vektor S dengan A1 :')
@@ -144,6 +154,7 @@ plt.tight_layout()
 st.pyplot(fig_s)
 st.divider()
 st.subheader('5. Menghitung Vektor V')
+st.markdown("<a id='menghitung-vektor-v'></a>", unsafe_allow_html=True)
 st.write('Rumus Vektor V :')
 st.latex(r'V_{i} = \frac{S_{i}}{\prod_{j=1}^{n} (x_{ij})^{w_{j}}}')
 st.write('Contoh Hitung Vektor V dengan A1 :')
@@ -160,51 +171,12 @@ plt.tight_layout()
 st.pyplot(fig_v)
 st.divider()
 st.subheader('6. Memberikan Peringkat Alternatif')
+st.markdown("<a id='memberikan-peringkat-alternatif'></a>", unsafe_allow_html=True)
 st.write('Tabel Ranking Alternatif :')
 st.write(rank)
 st.divider()
+st.subheader('7. Hasil Peringkat Alternatif Berdasarkan Fakultas Terjelek dalam Pembenahan Fasilitas')
+st.markdown("<a id='hasil-peringkat-alternatif-berdasarkan-fakultas-terjelek-dalam-pembenahan-fasilitas'></a>", unsafe_allow_html=True)
 st.metric(label="🥇 A1", value="Fakultas Biologi", delta="10.8%", delta_color="normal")
 st.metric(label="🥈 A12", value="Fakultas Teknik", delta="10.3%", delta_color="off")
 st.metric(label="🥉 A10", value="Fakultas Pertanian", delta="9.8%", delta_color="inverse")
-# # Fungsi untuk menghitung Weighted Product
-# def weighted_product(row, bobot):
-#     S = 1
-#     for i, nilai in enumerate(row[:-1]):
-#         if isinstance(nilai, str):
-#             continue
-#         pangkat = bobot[i]
-#         S *= float(nilai) ** pangkat
-#     return S
-
-# # Perhitungan Weighted Product
-# S = df.apply(lambda row: weighted_product(row, df.iloc[0, -len(row):]), axis=1)
-# df['Weighted Product'] = S
-
-# # Normalisasi Weighted Product
-# df['Normalisasi'] = df['Weighted Product'] / df['Weighted Product'].sum()
-
-# # Tampilkan hasil perhitungan
-# st.subheader('Hasil Perhitungan Weighted Product')
-# st.write(df)
-
-# # Plot Normalisasi Weighted Product
-# fig, ax = plt.subplots()
-# ax.bar(df['Alternatif'], df['Normalisasi'])
-# ax.set_xlabel('Alternatif')
-# ax.set_ylabel('Nilai Normalisasi')
-# ax.set_title('Normalisasi Weighted Product')
-# st.pyplot(fig)
-
-# # Penjelasan metode Weighted Product
-# # ... (bagian ini sama dengan sebelumnya)
-
-# # Penjelasan metode Weighted Product
-# st.subheader('Penjelasan Metode Weighted Product')
-# st.write('Metode Weighted Product (WP) adalah salah satu metode dalam Sistem Pendukung Keputusan (SPK) yang digunakan untuk menyelesaikan masalah Multi-Attribute Decision Making (MADM). Metode ini menggunakan perkalian untuk menghubungkan rating atribut, di mana rating setiap atribut harus dipangkatkan terlebih dahulu dengan bobot atribut yang bersangkutan.')
-# st.write('Langkah-langkah dalam metode Weighted Product adalah sebagai berikut:')
-# st.write('1. Menentukan kriteria dan bobot untuk setiap kriteria.')
-# st.write('2. Menghitung nilai Weighted Product (S) untuk setiap alternatif dengan rumus:')
-# st.write('$$S = \\prod_{j=1}^{n} (x_{ij})^{w_j}$$')
-# st.write('di mana $x_{ij}$ adalah nilai alternatif ke-i pada kriteria ke-j, dan $w_j$ adalah bobot dari kriteria ke-j.')
-# st.write('3. Melakukan normalisasi nilai Weighted Product (S) dengan membagi setiap nilai S dengan jumlah total dari semua nilai S.')
-# st.write('4. Memilih alternatif dengan nilai normalisasi tertinggi sebagai solusi terbaik.')
